@@ -25,7 +25,7 @@ const theme = createTheme({
       contrastText: '#fff',
     },
     text: {
-      primary: 'rgba(51, 51, 51, 1)',
+      primary: '#fff',
       secondary: 'rgba(0, 0, 0, 0.54)',
       disabled: 'rgba(0, 0, 0, 0.38)',
     },
@@ -73,7 +73,7 @@ const theme = createTheme({
     body1: {
       fontSize: '1rem',
       lineHeight: 1.75,
-      color: '#d1d5db',
+      color: '#fff',
     },
     body2: {
       fontSize: '1rem',
