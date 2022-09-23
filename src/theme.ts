@@ -5,7 +5,7 @@ import { red } from '@mui/material/colors';
 const theme = createTheme({
   palette: {
     common: { black: '#000', white: '#fff' },
-    background: { paper: '#fff', default: '#333' },
+    background: { paper: '#1b2330', default: '#333' },
     primary: {
       light: 'rgba(106, 189, 217, 1)',
       main: 'rgba(31, 151, 191, 1)',

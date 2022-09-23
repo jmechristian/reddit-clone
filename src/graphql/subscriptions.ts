@@ -9,11 +9,15 @@ export const onCreateBlog = /* GraphQL */ `
       name
       posts {
         items {
+          blogID
           id
           title
+          contents
+          image
+          upvotes
+          downvotes
           createdAt
           updatedAt
-          blogPostsId
           owner
         }
         nextToken
@@ -31,11 +35,15 @@ export const onUpdateBlog = /* GraphQL */ `
       name
       posts {
         items {
+          blogID
           id
           title
+          contents
+          image
+          upvotes
+          downvotes
           createdAt
           updatedAt
-          blogPostsId
           owner
         }
         nextToken
@@ -53,11 +61,15 @@ export const onDeleteBlog = /* GraphQL */ `
       name
       posts {
         items {
+          blogID
           id
           title
+          contents
+          image
+          upvotes
+          downvotes
           createdAt
           updatedAt
-          blogPostsId
           owner
         }
         nextToken
@@ -71,8 +83,13 @@ export const onDeleteBlog = /* GraphQL */ `
 export const onCreatePost = /* GraphQL */ `
   subscription OnCreatePost($owner: String) {
     onCreatePost(owner: $owner) {
+      blogID
       id
       title
+      contents
+      image
+      upvotes
+      downvotes
       blog {
         id
         name
@@ -96,7 +113,6 @@ export const onCreatePost = /* GraphQL */ `
       }
       createdAt
       updatedAt
-      blogPostsId
       owner
     }
   }
@@ -104,8 +120,13 @@ export const onCreatePost = /* GraphQL */ `
 export const onUpdatePost = /* GraphQL */ `
   subscription OnUpdatePost($owner: String) {
     onUpdatePost(owner: $owner) {
+      blogID
       id
       title
+      contents
+      image
+      upvotes
+      downvotes
       blog {
         id
         name
@@ -129,7 +150,6 @@ export const onUpdatePost = /* GraphQL */ `
       }
       createdAt
       updatedAt
-      blogPostsId
       owner
     }
   }
@@ -137,8 +157,13 @@ export const onUpdatePost = /* GraphQL */ `
 export const onDeletePost = /* GraphQL */ `
   subscription OnDeletePost($owner: String) {
     onDeletePost(owner: $owner) {
+      blogID
       id
       title
+      contents
+      image
+      upvotes
+      downvotes
       blog {
         id
         name
@@ -162,7 +187,6 @@ export const onDeletePost = /* GraphQL */ `
       }
       createdAt
       updatedAt
-      blogPostsId
       owner
     }
   }
@@ -173,8 +197,13 @@ export const onCreateComment = /* GraphQL */ `
       id
       postID
       post {
+        blogID
         id
         title
+        contents
+        image
+        upvotes
+        downvotes
         blog {
           id
           name
@@ -187,7 +216,6 @@ export const onCreateComment = /* GraphQL */ `
         }
         createdAt
         updatedAt
-        blogPostsId
         owner
       }
       content
@@ -203,8 +231,13 @@ export const onUpdateComment = /* GraphQL */ `
       id
       postID
       post {
+        blogID
         id
         title
+        contents
+        image
+        upvotes
+        downvotes
         blog {
           id
           name
@@ -217,7 +250,6 @@ export const onUpdateComment = /* GraphQL */ `
         }
         createdAt
         updatedAt
-        blogPostsId
         owner
       }
       content
@@ -233,8 +265,13 @@ export const onDeleteComment = /* GraphQL */ `
       id
       postID
       post {
+        blogID
         id
         title
+        contents
+        image
+        upvotes
+        downvotes
         blog {
           id
           name
@@ -247,7 +284,6 @@ export const onDeleteComment = /* GraphQL */ `
         }
         createdAt
         updatedAt
-        blogPostsId
         owner
       }
       content

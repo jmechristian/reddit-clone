@@ -12,11 +12,15 @@ export const createBlog = /* GraphQL */ `
       name
       posts {
         items {
+          blogID
           id
           title
+          contents
+          image
+          upvotes
+          downvotes
           createdAt
           updatedAt
-          blogPostsId
           owner
         }
         nextToken
@@ -37,11 +41,15 @@ export const updateBlog = /* GraphQL */ `
       name
       posts {
         items {
+          blogID
           id
           title
+          contents
+          image
+          upvotes
+          downvotes
           createdAt
           updatedAt
-          blogPostsId
           owner
         }
         nextToken
@@ -62,11 +70,15 @@ export const deleteBlog = /* GraphQL */ `
       name
       posts {
         items {
+          blogID
           id
           title
+          contents
+          image
+          upvotes
+          downvotes
           createdAt
           updatedAt
-          blogPostsId
           owner
         }
         nextToken
@@ -83,8 +95,13 @@ export const createPost = /* GraphQL */ `
     $condition: ModelPostConditionInput
   ) {
     createPost(input: $input, condition: $condition) {
+      blogID
       id
       title
+      contents
+      image
+      upvotes
+      downvotes
       blog {
         id
         name
@@ -108,7 +125,6 @@ export const createPost = /* GraphQL */ `
       }
       createdAt
       updatedAt
-      blogPostsId
       owner
     }
   }
@@ -119,8 +135,13 @@ export const updatePost = /* GraphQL */ `
     $condition: ModelPostConditionInput
   ) {
     updatePost(input: $input, condition: $condition) {
+      blogID
       id
       title
+      contents
+      image
+      upvotes
+      downvotes
       blog {
         id
         name
@@ -144,7 +165,6 @@ export const updatePost = /* GraphQL */ `
       }
       createdAt
       updatedAt
-      blogPostsId
       owner
     }
   }
@@ -155,8 +175,13 @@ export const deletePost = /* GraphQL */ `
     $condition: ModelPostConditionInput
   ) {
     deletePost(input: $input, condition: $condition) {
+      blogID
       id
       title
+      contents
+      image
+      upvotes
+      downvotes
       blog {
         id
         name
@@ -180,7 +205,6 @@ export const deletePost = /* GraphQL */ `
       }
       createdAt
       updatedAt
-      blogPostsId
       owner
     }
   }
@@ -194,8 +218,13 @@ export const createComment = /* GraphQL */ `
       id
       postID
       post {
+        blogID
         id
         title
+        contents
+        image
+        upvotes
+        downvotes
         blog {
           id
           name
@@ -208,7 +237,6 @@ export const createComment = /* GraphQL */ `
         }
         createdAt
         updatedAt
-        blogPostsId
         owner
       }
       content
@@ -227,8 +255,13 @@ export const updateComment = /* GraphQL */ `
       id
       postID
       post {
+        blogID
         id
         title
+        contents
+        image
+        upvotes
+        downvotes
         blog {
           id
           name
@@ -241,7 +274,6 @@ export const updateComment = /* GraphQL */ `
         }
         createdAt
         updatedAt
-        blogPostsId
         owner
       }
       content
@@ -260,8 +292,13 @@ export const deleteComment = /* GraphQL */ `
       id
       postID
       post {
+        blogID
         id
         title
+        contents
+        image
+        upvotes
+        downvotes
         blog {
           id
           name
@@ -274,7 +311,6 @@ export const deleteComment = /* GraphQL */ `
         }
         createdAt
         updatedAt
-        blogPostsId
         owner
       }
       content

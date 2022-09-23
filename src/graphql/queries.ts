@@ -9,11 +9,15 @@ export const getBlog = /* GraphQL */ `
       name
       posts {
         items {
+          blogID
           id
           title
+          contents
+          image
+          upvotes
+          downvotes
           createdAt
           updatedAt
-          blogPostsId
           owner
         }
         nextToken
@@ -48,8 +52,13 @@ export const listBlogs = /* GraphQL */ `
 export const getPost = /* GraphQL */ `
   query GetPost($id: ID!) {
     getPost(id: $id) {
+      blogID
       id
       title
+      contents
+      image
+      upvotes
+      downvotes
       blog {
         id
         name
@@ -73,7 +82,6 @@ export const getPost = /* GraphQL */ `
       }
       createdAt
       updatedAt
-      blogPostsId
       owner
     }
   }
@@ -86,8 +94,13 @@ export const listPosts = /* GraphQL */ `
   ) {
     listPosts(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
+        blogID
         id
         title
+        contents
+        image
+        upvotes
+        downvotes
         blog {
           id
           name
@@ -100,7 +113,47 @@ export const listPosts = /* GraphQL */ `
         }
         createdAt
         updatedAt
-        blogPostsId
+        owner
+      }
+      nextToken
+    }
+  }
+`;
+export const postByBlogID = /* GraphQL */ `
+  query PostByBlogID(
+    $blogID: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelPostFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    postByBlogID(
+      blogID: $blogID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        blogID
+        id
+        title
+        contents
+        image
+        upvotes
+        downvotes
+        blog {
+          id
+          name
+          createdAt
+          updatedAt
+          owner
+        }
+        comments {
+          nextToken
+        }
+        createdAt
+        updatedAt
         owner
       }
       nextToken
@@ -113,8 +166,13 @@ export const getComment = /* GraphQL */ `
       id
       postID
       post {
+        blogID
         id
         title
+        contents
+        image
+        upvotes
+        downvotes
         blog {
           id
           name
@@ -127,7 +185,6 @@ export const getComment = /* GraphQL */ `
         }
         createdAt
         updatedAt
-        blogPostsId
         owner
       }
       content
@@ -148,11 +205,54 @@ export const listComments = /* GraphQL */ `
         id
         postID
         post {
+          blogID
           id
           title
+          contents
+          image
+          upvotes
+          downvotes
           createdAt
           updatedAt
-          blogPostsId
+          owner
+        }
+        content
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+    }
+  }
+`;
+export const commentsByPostID = /* GraphQL */ `
+  query CommentsByPostID(
+    $postID: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelCommentFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    commentsByPostID(
+      postID: $postID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        postID
+        post {
+          blogID
+          id
+          title
+          contents
+          image
+          upvotes
+          downvotes
+          createdAt
+          updatedAt
           owner
         }
         content
